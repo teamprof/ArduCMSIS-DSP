@@ -1,0 +1,21 @@
+# CMSIS-DSP Library - Build configuration
+#
+# This file configures how the Arduino IDE links the precompiled libCMSISDSP.a library
+
+# Recipe patterns are called by Arduino IDE during compilation
+# They are typically defined in the board's platform.txt, but we can extend them here
+
+# Compiler flags
+compiler.c.flags=-c -g -Os {compiler.warning_flags} -ffunction-sections -fdata-sections -nostdlib
+compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -nostdlib
+
+# Include paths - automatically added when this library is included
+includes.precompiled={build.path}/sketch/{build.project_name}.cpp.o
+
+# Library linking
+# The precompiled library path will be automatically added to the linker flags
+recipe.ar.pattern="{compiler.path}arm-none-eabi-ar" rcs "{build.path}/{archive_file}" "{object_file}"
+recipe.c.combine.pattern="{compiler.path}arm-none-eabi-gcc" -mcpu={build.mcu} -mthumb {compiler.c.flags} {compiler.c.elf.flags} {compiler.c.elf.libs} -Wl,--gc-sections "-T{build.variant.path}/{build.ldscript}" -o "{build.path}/{build.project_name}.elf" {object_files} {build.path}/{archive_file} "{build.path}/{build.project_name}.a" -lm
+
+# Additional libraries to link
+# The libCMSISDSP.a will be linked through the library discovery mechanism
