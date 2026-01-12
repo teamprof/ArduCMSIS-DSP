@@ -1,6 +1,6 @@
 # CMSIS-DSP Arduino Library
 
-This is a fork of precompiled Arduino library package for ARM CMSIS-DSP (Cortex Microcontroller Software Interface Standard - Digital Signal Processing Library) maintained by Team Prof.
+This is a fork of precompiled Arduino library package for ARM CMSIS-DSP (Cortex Microcontroller Software Interface Standard - Digital Signal Processing Library) maintained by teamprof.net@gmail.com
 
 ## Features (NOT fully tested)
 
@@ -62,6 +62,13 @@ See the original repository for details.
 
 ## Version Information
 
-- CMSIS-DSP Version: 1.0.0
+### MSIS-DSP Version: 1.0.0
+### Arduino IDE version: 2.3.6
+
+- Board: Raspberry Pi Pico - Arduino Mbed OS RP2040 Boards
 - Target: ARM Cortex-M0+ (RP2040)
 - Compiler: arm-none-eabi-gcc 7.2.1
+
+- Board: Raspberry Pi Pico 2
+- Target: ARM Cortex-M33 (RP2350)
+- Compiler: arm-none-eabi-gcc (GCC) 14.3.0
